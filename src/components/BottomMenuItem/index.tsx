@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { TouchableOpacity, Text } from 'react-native';
+import { styles } from './style';
 
 interface BottomMenuItemProps {
   icon: ReactNode;
@@ -18,16 +19,3 @@ export default function BottomMenuItem({ icon, label, isActive, color }: BottomM
     </TouchableOpacity>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-  },
-  label: {
-    fontSize: 11,
-    marginTop: 4,
-    fontWeight: '500',
-  },
-});
