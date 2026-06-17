@@ -46,27 +46,6 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  passwordLabel: {
-    color: '#FFFFFF',
-    fontSize: 18,
-    marginBottom: 20,
-  },
-  inputContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderBottomWidth: 1,
-    borderBottomColor: '#FFFFFF',
-    width: '100%',
-    paddingBottom: 8,
-    marginBottom: 24,
-  },
-  input: {
-    flex: 1,
-    color: '#FFFFFF',
-    fontSize: 24,
-    marginLeft: 12,
-    letterSpacing: 4,
-  },
   loginButton: {
     backgroundColor: '#FFFFFF',
     width: '100%',

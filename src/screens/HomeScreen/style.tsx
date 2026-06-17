@@ -118,6 +118,12 @@ export const styles = StyleSheet.create({
     marginTop: 8,
     lineHeight: 22,
   },
+  itauLogo: {
+    width: 20,
+    height: 20,
+    resizeMode: 'contain',
+    borderRadius: 4,
+  },
   balanceLabel: {
     fontSize: 14,
     color: '#666666',

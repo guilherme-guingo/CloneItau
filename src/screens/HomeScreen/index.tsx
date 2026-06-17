@@ -1,18 +1,30 @@
 import React from 'react';
-import { View, Text, ScrollView, SafeAreaView } from 'react-native';
-import { Feather, MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
+import { View, Text, ScrollView, SafeAreaView, Image } from 'react-native';
+import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
+import { RouteProp } from '@react-navigation/native';
+import { RootStackParamList } from '../../Tipos';
 import ActionCard from '../../components/ActionCard';
 import BottomMenuItem from '../../components/BottomMenuItem';
 import { styles } from './style';
 
-export default function HomeScreen() {
+const itauLogo = require('../../../assets/itau-logo.png');
+
+type HomeScreenRouteProp = RouteProp<RootStackParamList, 'Home'>;
+
+interface Props {
+  route: HomeScreenRouteProp;
+}
+
+export default function HomeScreen({ route }: Props) {
+  const { user } = route.params;
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.orangeHeader}>
         <View style={styles.topBar}>
           <View style={styles.profileBadge}>
-            <Text style={styles.profileBadgeText}>PF</Text>
-            <Text style={styles.profileName}>Paulo</Text>
+            <Text style={styles.profileBadgeText}>{user.iniciais}</Text>
+            <Text style={styles.profileName}>{user.nome}</Text>
           </View>
           <View style={styles.headerIcons}>
             <Feather name="search" size={24} color="#FFFFFF" style={styles.iconMargin} />
@@ -61,7 +73,7 @@ export default function HomeScreen() {
           <View style={styles.infoCard}>
             <View style={styles.cardHeader}>
               <View style={styles.cardHeaderLeft}>
-                <Ionicons name="wallet-outline" size={20} color="#1E3A8A" />
+                <Image source={itauLogo} style={styles.itauLogo} />
                 <Text style={styles.cardTitle}>Conta corrente</Text>
               </View>
               <Feather name="chevron-right" size={20} color="#999999" />

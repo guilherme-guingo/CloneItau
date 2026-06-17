@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, SafeAreaView, KeyboardAvoidingView, Platform } from 'react-native';
+import { View, Text, TouchableOpacity, SafeAreaView, KeyboardAvoidingView, Platform } from 'react-native';
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../../App';
+import { RootStackParamList } from '../../Tipos';
 import BottomMenuItem from '../../components/BottomMenuItem';
+import Input from '../../components/Input';
+import { mockUser } from '../../data/mockUser';
 import { styles } from './style';
 
 type LoginScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Login'>;
@@ -16,7 +18,7 @@ export default function LoginScreen({ navigation }: Props) {
   const [password, setPassword] = useState('');
 
   const handleLogin = () => {
-    navigation.navigate('Home');
+    navigation.navigate('Home', { user: mockUser });
   };
 
   return (
@@ -25,28 +27,25 @@ export default function LoginScreen({ navigation }: Props) {
         
         <View style={styles.header}>
           <View style={styles.profileCircle}>
-            <Text style={styles.profileInitials}>PC</Text>
+            <Text style={styles.profileInitials}>{mockUser.iniciais}</Text>
           </View>
           <View style={styles.userInfo}>
-            <Text style={styles.greetingText}>olá, Pedro</Text>
-            <Text style={styles.accountText}>Ag •••• C/C •••••-•</Text>
+            <Text style={styles.greetingText}>olá, {mockUser.nome}</Text>
+            <Text style={styles.accountText}>{mockUser.contaInfo}</Text>
           </View>
           <Feather name="chevron-down" size={24} color="#FFFFFF" />
         </View>
 
         <View style={styles.mainContent}>
-          <Text style={styles.passwordLabel}>senha eletrônica</Text>
-          
-          <View style={styles.inputContainer}>
-            <Feather name="lock" size={20} color="#FFFFFF" />
-            <TextInput
-              style={styles.input}
-              secureTextEntry
-              value={password}
-              onChangeText={setPassword}
-              autoCapitalize="none"
-            />
-          </View>
+          <Input 
+            label="senha eletrônica"
+            type="password"
+            variant="underline"
+            leftIcon={<Feather name="lock" size={20} color="#FFFFFF" />}
+            value={password}
+            onChangeText={setPassword}
+            autoCapitalize="none"
+          />
 
           <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
             <Text style={styles.loginButtonText}>acessar</Text>
